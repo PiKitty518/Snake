@@ -1,8 +1,10 @@
 import turtle
 import time
 import random
+import math
 
 delay = 0.1
+grid=math.floor(20/300)
 
 wn=turtle.Screen()
 wn.title("Snake Game by PiKitty518")
@@ -67,8 +69,10 @@ while True:
     wn.update()
 
     if head.distance(food) < 20:
-        x=random.randint(-290,290)
-        y=random.randint(-290,290)
+        x=random.randint(-grid,grid)*20
+        y=random.randint(-grid,grid)*20
+        round(x)
+        round(y)
         food.goto(x,y)
 
         new_segment = turtle.Turtle()
@@ -92,6 +96,12 @@ while True:
         x = segments[index-1].xcor()
         y = segments[index-1].ycor()
         segments[index].goto(x,y)
+        if segments[index].distance(food) < 20:
+            x=random.uniform(-14.5,14.5)*20
+            y=random.uniform(-14.5,14.5)*20
+            round(x)
+            round(y)
+            food.goto(x,y)
 
     if len(segments) > 0:
         x = head.xcor()
