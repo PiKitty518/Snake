@@ -6,6 +6,18 @@ import math
 delay = 0.1
 grid=math.floor(20/300)
 
+boarder=turtle.Turtle()
+boarder.speed(0)
+boarder.penup()
+boarder.goto(300,300)
+boarder.pendown()
+boarder.goto(-300,300)
+boarder.goto(-300,-300)
+boarder.goto(300,-300)
+boarder.goto(300,300)
+boarder.penup()
+boarder.goto(1000,1000)
+
 wn=turtle.Screen()
 wn.title("Snake Game by PiKitty518")
 wn.bgcolor("green")
@@ -69,10 +81,13 @@ while True:
     wn.update()
 
     if head.distance(food) < 20:
-        x=random.randint(-grid,grid)*20
-        y=random.randint(-grid,grid)*20
-        round(x)
-        round(y)
+        x=random.uniform(-14.5,14.5)
+        y=random.uniform(-14.5,14.5)
+        x=math.floor(x)
+        y=math.floor(y)
+        x*=20
+        y*=20
+        print(x,y)
         food.goto(x,y)
 
         new_segment = turtle.Turtle()
@@ -89,6 +104,14 @@ while True:
 
         for segment in segments:
             segment.goto(1000,1000)
+        x=random.uniform(-14.5,14.5)
+        y=random.uniform(-14.5,14.5)
+        x=math.floor(x)
+        y=math.floor(y)
+        x*=20
+        y*=20
+        print(x,y)
+        food.goto(x,y)
 
         segments.clear()
 
@@ -97,10 +120,11 @@ while True:
         y = segments[index-1].ycor()
         segments[index].goto(x,y)
         if segments[index].distance(food) < 20:
-            x=random.uniform(-14.5,14.5)*20
-            y=random.uniform(-14.5,14.5)*20
+            x=random.uniform(-290,290)
+            y=random.uniform(-290,290)
             round(x)
             round(y)
+            print(x,y)
             food.goto(x,y)
 
     if len(segments) > 0:
@@ -118,8 +142,15 @@ while True:
 
             for segment in segments:
                 segment.goto(1000,1000)
+            x=random.randint(-grid,grid)*20
+            y=random.randint(-grid,grid)*20
+            round(x)
+            round(y)
+            print(x,y)
+            food.goto(x,y)
             
             segments.clear()
+
 
     time.sleep(delay)
 
