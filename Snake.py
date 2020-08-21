@@ -9,12 +9,12 @@ grid=math.floor(20/300)
 boarder=turtle.Turtle()
 boarder.speed(0)
 boarder.penup()
-boarder.goto(300,300)
+boarder.goto(310,310)
 boarder.pendown()
-boarder.goto(-300,300)
-boarder.goto(-300,-300)
-boarder.goto(300,-300)
-boarder.goto(300,300)
+boarder.goto(-310,310)
+boarder.goto(-310,-310)
+boarder.goto(310,-310)
+boarder.goto(310,310)
 boarder.penup()
 boarder.goto(1000,1000)
 
@@ -97,7 +97,7 @@ while True:
         new_segment.penup()
         segments.append(new_segment)
 
-    if head.xcor()>290 or head.xcor()<-290 or head.ycor()>290 or head.ycor()<-290:
+    if head.xcor()>300 or head.xcor()<-300 or head.ycor()>300 or head.ycor()<-300:
         time.sleep(1)
         head.goto(0,0)
         head.direction="stop"
@@ -120,10 +120,12 @@ while True:
         y = segments[index-1].ycor()
         segments[index].goto(x,y)
         if segments[index].distance(food) < 20:
-            x=random.uniform(-290,290)
-            y=random.uniform(-290,290)
-            round(x)
-            round(y)
+            x=random.uniform(-14.5,14.5)
+            y=random.uniform(-14.5,14.5)
+            x=math.floor(x)
+            y=math.floor(y)
+            x*=20
+            y*=20
             print(x,y)
             food.goto(x,y)
 
